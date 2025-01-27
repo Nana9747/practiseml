@@ -7,6 +7,9 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
+from src.components.data_tranformation import Datatransformation
+from src.components.data_tranformation import DataTransformationConfig
+
 class DataIngestionConfig:
     train_data_path: str=os.path.join('databox',"train.csv")
     test_data_path: str=os.path.join('databox',"test.csv")
@@ -46,12 +49,11 @@ class DataIngestion:
             raise CustomException(e,sys)    
         
 if __name__ == "__main__":
-    try:
-        # Create an instance of the DataIngestion class
-        data_ingestion = DataIngestion()
+    obj=DataIngestion()
+    train_data,test_data=obj.initiate_data_ingestion()
 
-        # Call the initiate_data_ingestion method to perform data ingestion
-        train_data_path, test_data_path = data_ingestion.initiate_data_ingestion()
+    data_transformation=Datatransformation()
+    train_arr,test_arr,_=data_transformation.initiate_data_transformation(train_data,test_data)
 
-    except Exception as e :
-        raise CustomException(e,sys)            
+    #modeltrainer=ModelTrainer()
+    #print(modeltrainer.initiate_model_trainer(train_arr,test_arr))            
