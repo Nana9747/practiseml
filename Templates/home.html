@@ -1,0 +1,70 @@
+<html>
+<body>
+    <div class="login">
+       <h1>Algerian Forest Fire FWI Indicator</h1>
+   
+       <form action="{{ url_for('predict_datapoint')}}" method="post">
+        <h1>
+            <legend>FWI Prediction</legend>
+        </h1>
+        <div class="mb-3">
+            <label class="form-label">Temperature (°C)</label>
+            <input class="form-control" type="number" name="Temperature" placeholder="Enter the Temperature in °C" min="0" max="55" step="any" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Relative Humidity (RH) (%)</label>
+            <input class="form-control" type="number" name="RH" placeholder="Enter RH value (%)" min="0" max="100" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Wind Speed (Ws) (km/h)</label>
+            <input class="form-control" type="number" name="Ws" placeholder="Enter Wind Speed (km/h)" min="0" max="45" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Rainfall (mm)</label>
+            <input class="form-control" type="number" name="Rain" placeholder="Enter Rainfall (mm)" min="0" max="20" step="any" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">FFMC</label>
+            <input class="form-control" type="number" name="FFMC" placeholder="Enter FFMC value" min="0" max="100" step="any" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">DMC</label>
+            <input class="form-control" type="number" name="DMC" placeholder="Enter DMC value" min="0" max="75" step="any" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">DC</label>
+            <input class="form-control" type="number" name="DC" placeholder="Enter DC value" min="0" max="300" step="any" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">ISI</label>
+            <input class="form-control" type="number" name="ISI" placeholder="Enter ISI value" min="0" max="20" step="any" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">BUI</label>
+            <input class="form-control" type="number" name="BUI" placeholder="Enter BUI value" min="0" max="80" step="any" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Classes</label>
+            <select class="form-control" name="Classes" required>
+                <option value="" disabled selected>Select Class</option>
+                <option value="0">0 (Class 0)</option>
+                <option value="1">1 (Class 1)</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Region</label>
+            <select class="form-control" name="Region" required>
+                <option value="" disabled selected>Select Region</option>
+                <option value="0">0 (Region 0)</option>
+                <option value="1">1 (Region 1)</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="Predict your FWI Score" />
+        </div>
+    </form>
+    <h2>
+       THE prediction is {{results}}
+    </h2>
+   </body>
+</html>
